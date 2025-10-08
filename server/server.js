@@ -12,5 +12,5 @@ const port=process.env.PORT || 3000;
 app.get('/',(req,res)=>res.send("server is running"))
 app.use("/api/inngest", serve({ client: inngest, functions }));
 
-app.listen(port,()=>
-console.log(`server is runnig on port ${port}`))
+// app.listen(port,()=>
+// console.log(`server is runnig on port ${port}`))
