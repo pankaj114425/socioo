@@ -8,10 +8,9 @@ const app=express();
 await connectDB()
 app.use(express.json())
 app.use(cors())
-const port=process.env.PORT || 3000;
+const port=process.env.PORT || 4000;
 app.get('/',(req,res)=>res.send("server is running"))
 app.use("/api/inngest", serve({ client: inngest, functions }));
 
-// app.listen(port,()=>
-// console.log(`server is runnig on port ${port}`))
-export default app;
+app.listen(port,()=>
+console.log(`server is runnig on port ${port}`))
