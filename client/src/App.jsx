@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Login from './pages/Login'
 import Feed from './pages/Feed'
@@ -8,13 +8,20 @@ import Connections from './pages/Connections'
 import Discover from './pages/Discover'
 import Profile from './pages/Profile'
 import CreatePost from './pages/CreatePost'
-import { useUser } from '@clerk/clerk-react'
+import { useUser,useAuth } from '@clerk/clerk-react'
 import Layout from './pages/Layout'
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const App = () => {
   const {user}=useUser()
+  const {getToken}=useAuth()
+  useEffect(()=>{
+    if(user){
+  getToken().then((token)=>console.log(token))
+    }
+   
+  },[user])
   return (
   <>
  <ToastContainer 
@@ -47,5 +54,5 @@ const App = () => {
   </>
   )
 }
-// 6:14
+//8:05 6:37 multer
 export default App
